@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/foo', function(){
+	return 'Hello World';
+});
+
+// Route::get('/user/{name?}', function ($name = 'John') {
+// 	return $name;
+// });
+
+Route::get('/user', 'UserController@index')->name('user');
+
+Route::get('/course', 'CourseController@index')->name('course');
