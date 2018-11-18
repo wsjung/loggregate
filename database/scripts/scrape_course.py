@@ -4,8 +4,8 @@ import time
 import sqlite3
 
 # constants
-# SQLITE_FILE = './../database.sqlite'
-SQLITE_FILE = './foo.sqlite'
+SQLITE_FILE = './../database.sqlite'
+# SQLITE_FILE = './foo.sqlite'
 URL='https://www.coursicle.com/pugetsound/courses/'
 
 # sqlite db connection
