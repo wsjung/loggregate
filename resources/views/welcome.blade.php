@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-			Loggregate
+			<img src="images/grizz.png" height=15%, width=15%>Loggregate
                 </div>
 
                 <div class="links">
