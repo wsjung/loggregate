@@ -39,6 +39,9 @@
                         <li class="nav-item link">
                             <a class="nav-link" href="{{ route('course') }}">COURSE LIST</a>
                         </li>
+                        <li class="nav-item link">
+                            <a class="nav-link" href="{{ route('search') }}">SEARCH</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
