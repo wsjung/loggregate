@@ -36,6 +36,9 @@
                         <li class="nav-item link">
                             <a class="nav-link" href="{{ route('home') }}">HOME</a>
                         </li>
+                        <li class="nav-item link">
+                            <a class="nav-link" href="{{ route('course') }}">COURSE LIST</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
