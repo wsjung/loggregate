@@ -11,7 +11,7 @@
 
                     <div class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Select Course Department <span class="caret"></span>
+                            Select Subject <span class="caret"></span>
                         </a>
                         <div class='dropdown-menu dropdown-menu-left' aria-labelledby='navbarDropdown'>
                             <?php
@@ -38,6 +38,29 @@
                                     <ul class=\"multi-column-dropdown\">";
                                     }
                                     echo "<li><a href=\"#\">" . $course->subject . "</a></li>";
+                                    $count+=1;
+                                }
+                                echo "</ul></div>";
+                                ?>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Subject <b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-column columns-3">
+                            <div class="row">
+                                <?php
+                                $count = 0;
+                                echo "<div class=\"col-sm-4\">
+                                    <ul class=\"multi-column-dropdown\">";
+                                foreach ($courses as $course) {
+                                    if($count > 1 && $count%15==1) {
+                                        echo "</ul></div>
+                                        <div class=\"col-sm-4\">
+                                    <ul class=\"multi-column-dropdown\">";
+                                    }
+                                    echo "<li><a id=\"redlink\" href=\"#\">" . $course->subject . "</a></li>";
                                     $count+=1;
                                 }
                                 echo "</ul></div>";
