@@ -30,3 +30,5 @@ Route::get('/foo', function(){
 Route::get('/user', 'UserController@index')->name('user');
 
 Route::get('/course', 'CourseController@index')->name('course');
+
+Route::get('/search', 'SearchController@index')->name('search');
