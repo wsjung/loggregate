@@ -80,8 +80,8 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-			Loggregate
+                <div class="title m-b-md" style="float: right; margin-right: 100px;">
+			<img src="images/grizz.png" width = 100px>Loggregate
                 </div>
 
                 <div class="links">
