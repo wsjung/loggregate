@@ -1,76 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
 
-                <div class="card-header">Find a Course</div>
-                <div class="card-body">
+<main role="main" class="container">
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Find a course</h1>
+  </div>
+</div>    
 
-                    <div class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Select Subject <span class="caret"></span>
-                        </a>
-                        <div class='dropdown-menu dropdown-menu-left' aria-labelledby='navbarDropdown'>
-                            <?php
-                            foreach ($courses as $course) {
 
-                                echo "<a class='dropdown-item' href='#'>" . $course->subject . "</a>";
-                            }
-                            ?>
-                        </div>
-                    </div>
+<div class=container>
 
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Subject <b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <?php
-                                $count = 0;
-                                echo "<div class=\"col-sm-4\">
-                                    <ul class=\"multi-column-dropdown\">";
-                                foreach ($courses as $course) {
-                                    if($count > 1 && $count%20==1) {
-                                        echo "</ul></div>
-                                        <div class=\"col-sm-4\">
-                                    <ul class=\"multi-column-dropdown\">";
-                                    }
-                                    echo "<li><a href=\"#\">" . $course->subject . "</a></li>";
-                                    $count+=1;
-                                }
-                                echo "</ul></div>";
-                                ?>
-                            </div>
-                        </ul>
-                    </div>
+    <div id="accordion">
 
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Subject <b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <?php
-                                $count = 0;
-                                echo "<div class=\"col-sm-4\">
-                                    <ul class=\"multi-column-dropdown\">";
-                                foreach ($courses as $course) {
-                                    if($count > 1 && $count%15==1) {
-                                        echo "</ul></div>
-                                        <div class=\"col-sm-4\">
-                                    <ul class=\"multi-column-dropdown\">";
-                                    }
-                                    echo "<li><a id=\"redlink\" href=\"#\">" . $course->subject . "</a></li>";
-                                    $count+=1;
-                                }
-                                echo "</ul></div>";
-                                ?>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+        $temp = "";
+        $num = 0;
+
+        foreach($courses as $course) {
+            if($course->subject != $temp) {
+                if($num > 0) {
+                    echo '</ul></div></div>';
+                }
+                echo '<div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title">
+                <div data-toggle="collapse" data-parent="#accordion" href="#collapse'.$course->subject.'" class="card-header">
+                '.$course->subject.'
+                </h4>
+                </div>';
+
+                echo '<div id="collapse'.$course->subject.'" class="panel-collapse collapse in">
+                <ul class="list-group">';
+                $temp = $course->subject;
+                $num += 1;
+            }
+
+            echo '<li class="list-group-item">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name .'</li>';
+
+        }
+        ?>
     </div>
 </div>
+</main>
 @endsection
