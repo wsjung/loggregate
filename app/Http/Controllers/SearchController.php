@@ -14,6 +14,7 @@ class SearchController extends Controller
      */
     public function index()
     {
+        // $courses = DB::table('courses')->select('subject')->groupBy('subject')->get();
         $courses = DB::table('courses')->get();
 
         return view('search', ['courses' => $courses]);
