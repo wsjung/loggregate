@@ -30,3 +30,9 @@ Route::get('/foo', function(){
 Route::get('/user', 'UserController@index')->name('user');
 
 Route::get('/course', 'CourseController@index')->name('course');
+
+Route::get('/settings', 'SettingsController@index')->name('settings');
+
+Route::get('/search', 'SearchController@index')->name('search');
+
+Route::get('/secret', 'SecretController@index')->name('secret');
