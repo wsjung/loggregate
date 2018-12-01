@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-
 <main role="main" class="container">
     <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Find a course</h1>
   </div>
-</div>    
+</div>
+
+<div class="container" id="selectedCourses">
+</div>
 
 
 <div class=container>
-
     <div id="accordion">
-
         <?php
         $temp = "";
         $num = 0;
@@ -37,11 +37,40 @@
                 $num += 1;
             }
 
-            echo '<li class="list-group-item">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name .'</li>';
+            echo '<li class="list-group-item" id="item' . $course->subject . $course->courseNum . '" onclick="addCourse(\'' . $course->subject . '\',\'' . $course->courseNum . '\')">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name .'</li>';
 
         }
         ?>
     </div>
 </div>
 </main>
+
+<script type="text/javascript">
+    // functions for adding selected element to top
+    function addCourse(subject, courseID) {
+        // adds selected course to top
+        // if(document.getElementById('item'+subject+courseID).style.backgroundColor == '#ffffff') {
+            var p = document.getElementById('selectedCourses');
+            var newCourse = document.createElement('button');
+            newCourse.setAttribute('class', 'btn btn-outline-primary');
+            newCourse.setAttribute('id', 'selected'+subject+courseID);
+            newCourse.setAttribute('onclick', 'removeCourse(this.id);');
+            newCourse.innerHTML = subject + ' : ' + courseID;
+            p.appendChild(newCourse);
+
+            // recolors selected course in list
+            var p = document.getElementById('item' + subject + courseID);
+            p.style.backgroundColor = '#3399ff';
+        // }
+    }
+
+    // function for removing select element from top
+    function removeCourse(elementID) {
+        var element = document.getElementById(elementID);
+        var id = element.id.slice(8);
+        element.parentNode.removeChild(element);
+        var p = document.getElementById('item' + id);
+        p.style.backgroundColor = '#ffffff';
+    }
+</script>
 @endsection
