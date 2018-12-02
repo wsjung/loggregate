@@ -15,11 +15,12 @@ class CreateStudygroupTable extends Migration
     {
         Schema::create('studygroup', function (Blueprint $table) {
             $table->increments('groupID');
-            $table->foreign('courseID')->references('courseID')->on('courses')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from Courses
+            $table->unsignedBigInteger('courseID');
             $table->string('name');
-            $table->time('meetTime')
-            $table->string('meetDay')
-            $table->string('meetLocation')
+            $table->time('meetTime');
+            $table->string('meetDay');
+            $table->string('meetLocation');
+            $table->foreign('courseID')->references('courseID')->on('courses')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from Courses
         });
     }
 

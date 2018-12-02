@@ -14,6 +14,8 @@ class CreateMembershipTable extends Migration
     public function up()
     {
         Schema::create('membership', function (Blueprint $table) {
+            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('groupID');
             $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from users
             $table->foreign('groupID')->references('groupID')->on('studygroup')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from studygroup
         });

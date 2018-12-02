@@ -14,8 +14,10 @@ class CreateSubscribedTable extends Migration
     public function up()
     {
         Schema::create('subscribed', function (Blueprint $table) {
-            $table->integer('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from users
-            $table->integer('courseID')->references('courseID')->on('courses')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from courses
+            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('courseID');
+            $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from users
+            $table->foreign('courseID')->references('courseID')->on('courses')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from courses
         });
     }
 
