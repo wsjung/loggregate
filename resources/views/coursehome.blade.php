@@ -11,16 +11,16 @@
                     <?php
                         if($subscribed->where('courseID','1')->where('id', \Auth::user()->id)->count() === 0){
                             echo "
-                            <form action=\"\" method=\"post\">
-                                <button type=\"submit\" class=\"btn btn-primary my-2\">Subscribe</button>
-                            </form>
+                                <form action=\"sub\" method=\"GET\">
+                                <button class=\"btn btn-primary my-2\">Subscribe</button>
+                                <form>
                             ";
                         }
                         else if ($subscribed->where('courseID','1')->where('id', \Auth::user()->id)->count() === 1){
                             echo "
-                            <form action=\"\" method=\"post\">
-                                <button type=\"submit\" class=\"btn btn-primary my-2\">Unsubscribe</button>
-                            </form>
+                            <form action=\"unsub\" method=\"GET\">
+                            <button class=\"btn btn-primary my-2\">Unsubscribe</button>
+                            <form>
                             ";
                         }
 
