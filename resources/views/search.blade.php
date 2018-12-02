@@ -4,9 +4,6 @@
 
 
 <main role="main" class="container">
-
-
-
     <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Find a course</h1>
@@ -18,13 +15,12 @@
 </div>
 
 
- <h5>Your classes:</h5>
-
 <div class="container" id="selectedCourses">
-    <form method="POST" action="{{ route('addCourse') }}">
-        
+    <form id="selectForm" action="/action_page.php">
+        <h5>Your classes: <input type="submit" value="Subscribe"></h5>
     </form>
 </div>
+
 <br>
 
 <div class="container">
@@ -58,7 +54,7 @@ Course list:
                 $num += 1;
             }
 
-            echo '<li class="list-group-item" id="item' . $course->subject . $course->courseNum . '" onclick="addCourse(\'' . $course->subject . '\',\'' . $course->courseNum . '\')">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name  . '</li>';
+            echo '<li class="list-group-item" id="item' . $course->subject . $course->courseNum . '" onclick="addCourse(\'' . $course->subject . '\',\'' . $course->courseNum . '\',\'' . $course->courseID . '\')">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name  . '</li>';
 
         }
         ?>
@@ -67,36 +63,56 @@ Course list:
 </main>
 
 <script type="text/javascript">
+    var i = 0;
     // functions for adding selected element to top
-    function addCourse(subject, courseID) {
+    function addCourse(subject, courseNum, courseID) {
         // adds selected course to top
-        var l = document.getElementById('item' + subject + courseID);
+        var l = document.getElementById('item' + subject + courseNum);
         if(l.style.backgroundColor === "rgb(255, 255, 255)" || l.style.backgroundColor === "") {
-            var p = document.getElementById('selectedCourses');
+            var p = document.getElementById('selectForm');
             var newCourse = document.createElement('button');
+            newCourse.setAttribute('type','button');
+            newCourse.setAttribute('name','' + i);
             newCourse.setAttribute('class', 'btn btn-outline-primary');
-            newCourse.setAttribute('id', 'selected'+subject+courseID);
+            newCourse.setAttribute('id', 'selected'+subject+courseNum);
             newCourse.setAttribute('onclick', 'removeCourse(this.id);');
-            newCourse.innerHTML = subject + ' : ' + courseID;
+            newCourse.setAttribute('value', '' + courseID)
+            newCourse.innerHTML = subject + ' : ' + courseNum;
             p.appendChild(newCourse);
+            i = i+1;
 
             // recolors selected course in list
             l.style.backgroundColor = '#3399ff';
             return;
         } 
         if(l.style.backgroundColor === "rgb(51, 153, 255)") {
-            removeCourse('selected'+subject+courseID);
+            removeCourse('selected'+subject+courseNum);
             l.style.backgroundColor = '#fff';
         }
     }
 
     // function for removing select element from top
     function removeCourse(elementID) {
+        // element to remove
         var element = document.getElementById(elementID);
+        // index of element to remove
+        var index = element.name; // i
         var id = element.id.slice(8);
+        // parent
+        var parent = element.parentNode;
+        var children = parent.children;
+        var x;
+        // decrement rest higher than index
+        for(x=0;x<children.length;x++) {
+            if(children[x].name > index) {
+                children[x].name = '' + (parseInt(children[x].name) - 1);
+            }
+        }
+
         element.parentNode.removeChild(element);
         var p = document.getElementById('item' + id);
         p.style.backgroundColor = '#fff';
+        i = i -1;
     }
 </script>
 @endsection
