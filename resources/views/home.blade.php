@@ -34,12 +34,13 @@
       <div class="card">
 
         <div class="card-header">My Groups</div>
-        <div class="card-body"></div>
+        <div class="card-body">
         <?php
         foreach ($studyGroups as $group){
-          echo '<li class="list-group-item">'. $group->groupName . ' : ' . $group->meetTime . ' ' . $group->meetDay . ' , '. $group->meetLocation .'</li>';
+          echo '<li class="list-group-item"><a href=/grouphome/'.$group->groupID.'">'. $group->groupName . ' : ' . $group->meetTime . ' ' . $group->meetDay . ' , '. $group->meetLocation .'</a></li>';
         }
         ?>
+        </div>
       </div>
     </div>
   </div>
