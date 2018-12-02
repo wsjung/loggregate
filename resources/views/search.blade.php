@@ -4,14 +4,24 @@
 
 
 <main role="main" class="container">
+    <?php 
+    if(isset($subbed)) {
+        echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Crispy guacamole!</strong> You subscribed to your courses. View them in the home page!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
+    ?>
     <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Find a course</h1>
-    <br>
-    <h5>To add classes click the class you want to enroll in </h5>
-    <h5>To delete classes click class you want to remove in your list </h5>
-    <h5>Once you have slected all the courses you want to enroll in, hit enroll</h5>
-  </div>
+      <div class="container">
+        <h1 class="display-4">Find a course</h1>
+        <br>
+        <h5>To add classes click the class you want to enroll in </h5>
+        <h5>To delete classes click class you want to remove in your list </h5>
+        <h5>Once you have slected all the courses you want to enroll in, hit enroll</h5>
+    </div>
 </div>
 
 
@@ -24,8 +34,8 @@
 <br>
 
 <div class="container">
-<br>
-<h5>Course list:</h5>
+    <br>
+    <h5>Course list:</h5>
 </div>
 
 <div class=container>

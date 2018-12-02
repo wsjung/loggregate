@@ -44,17 +44,30 @@ class SearchController extends Controller
             $s = explode(' ', $v);
 
             $subject = $s[0];
-            $courseID = $s[2];
+            $courseNum = $s[2];
 
-            echo $currentUserID . " " . $subject . " " . $courseNum . 
+            // echo $currentUserID . " " . $subject . " " . $courseNum . '<br>';
+
+
+            //grab course ID
+            $courseID = DB::table('courses')
+                ->select('courseID')
+                ->where([
+                ['subject', '=', $subject],
+                ['courseNum', '=', $courseNum],
+                ])->first();
 
             //subscribe user by entry in subscribed
-            DB::table('subscribed')->insert(['id' => $currentUserID, 'courseID' => $courseID]);
-
-            echo "INSERTED";
+            DB::table('subscribed')->insert(['id' => $currentUserID, 'courseID' => $courseID->courseID]);
 
         }
 
-        return var_dump($size);
+        return self::subbed('subbed');
+    }
+
+    public function subbed($subbed) {
+        $courses = DB::table('courses')->get();
+
+        return view('search', ['courses' => $courses, 'subbed' => $subbed]);
     }
 }
