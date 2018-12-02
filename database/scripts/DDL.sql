@@ -15,7 +15,7 @@ create table Courses (
 create table StudyGroup (
 	courseid INTEGER NOT NULL,
 	groupid INTEGER NOT NULL,
-	name TEXT NOT NULL,
+	groupName TEXT NOT NULL,
 	meetTime TEXT NOT NULL,
 	meetDay TEXT NOT NULL,
 	meetLoc TEXT NOT NULL,
@@ -62,4 +62,3 @@ create table Comments (
 	ON UPDATE CASCADE
 	ON DELETE CASCADE
 );
-
