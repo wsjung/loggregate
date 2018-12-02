@@ -7,16 +7,20 @@ use App\Http\Controllers\Controller;
 
 class GroupHomeController extends Controller
 {
-    public function index()
+    public function index($groupID)
     {
+        $currentUserID = \Auth::user()->id;
+
+        $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->get();
         $courses = DB::table('courses')->get();
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
-        $studygroup = DB::table('studygroup')->get();
+        $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
         $comments = DB::table('comments')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments
+        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
         ]);
     }
+
 }
