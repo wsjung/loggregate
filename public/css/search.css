@@ -1,0 +1,10 @@
+
+#selectedCourses .btn {
+    float: left;
+    border-left: 1;
+    border-right: 1;
+    border-bottom: 1;
+    margin: 8px;
+    padding: 2px 2px;
+
+}
