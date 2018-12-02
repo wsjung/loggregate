@@ -16,11 +16,11 @@
     ?>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">Find a course</h1>
+        <h1 class="display-4">Subscribe to Courses</h1>
         <br>
-        <h5>To add classes click the class you want to enroll in </h5>
-        <h5>To delete classes click class you want to remove in your list </h5>
-        <h5>Once you have slected all the courses you want to enroll in, hit enroll</h5>
+        <h5>To select classes, click on desired class </h5>
+        <h5>To delete a class, click the class in your list </h5>
+        <h5>Once you have slected your desired courses, hit subscribe</h5>
     </div>
 </div>
 
