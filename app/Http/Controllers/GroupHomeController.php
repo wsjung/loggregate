@@ -16,7 +16,7 @@ class GroupHomeController extends Controller
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
         $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
-        $comments = DB::table('comments')->get();
+        $comments = DB::table('comments')->where('groupID', $groupID)->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
         'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
