@@ -9,14 +9,17 @@ class CourseHomeController extends Controller
 {
     public function index()
     {
-        $courses = DB::table('courses')->get();
+        $currentCourseID = '1';
+        $currentUserID = \Auth::user()->id;
+
+        $courses = DB::table('courses')->where('courseID', $currentCourseID)->first();
         $users = DB::table('users')->get();
+        $subscribed = DB::table('subscribed')->get();
         $membership = DB::table('membership')->get();
-        $studygroup = DB::table('studygroup')->get();
-        $comments = DB::table('comments')->get();
+        $studygroup = DB::table('studygroup')->where('courseID', $currentCourseID)->get();
 
         return view('coursehome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments
+        'membership' => $membership, 'studygroup' => $studygroup, 'subscribed' => $subscribed
         ]);
     }
 }
