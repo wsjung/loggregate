@@ -19,4 +19,23 @@ class SearchController extends Controller
 
         return view('search', ['courses' => $courses]);
     }
+
+public function enroll() {       
+    $order = Order::where('order_id', $orderId)->first();
+    if (!$order) {
+        App::abort(404);
+}
+
+    $paid = Input::get('paid');
+    $order->save();
+
+    return Redirect::to('/admin/orders');
+}
+
+
+
+
+
+
+
 }

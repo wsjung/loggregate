@@ -17,6 +17,7 @@ class CreateStudygroupTable extends Migration
             $table->increments('groupID');
             $table->unsignedBigInteger('courseID');
             $table->string('name');
+            $table->string('description')->nullable();
             $table->time('meetTime');
             $table->string('meetDay');
             $table->string('meetLocation');
