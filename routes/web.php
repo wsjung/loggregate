@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/foo', function(){
 	return 'Hello World';
 });
+
+Route::get('/sub', 'CourseHomeController@sub')->name('sub');
+Route::get('/unsub', 'CourseHomeController@unsub')->name('unsub');
 
 // Route::get('/user/{name?}', function ($name = 'John') {
 // 	return $name;
