@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+
+    <link href="{{ asset('css/search.css') }}" rel="stylesheet" >
+
+
+
 </head>
 <body>
     <div id="app">

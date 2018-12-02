@@ -1,18 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <main role="main" class="container">
+
+
+
     <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Find a course</h1>
+    <br>
+    <h5>To add classes click the class you want to enroll in </h5>
+    <h5>To delete classes click class you want to remove in your list </h5>
+    <h5>Once you have slected all the courses you want to enroll in, hit enroll</h5>
   </div>
 </div>
 
+
+ <h5>Your classes:</h5>
+
 <div class="container" id="selectedCourses">
 </div>
-
+<br>
 
 <div class=container>
+    <br>
     <div id="accordion">
         <?php
         $temp = "";
@@ -37,7 +50,7 @@
                 $num += 1;
             }
 
-            echo '<li class="list-group-item" id="item' . $course->subject . $course->courseNum . '" onclick="addCourse(\'' . $course->subject . '\',\'' . $course->courseNum . '\')">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name .'</li>';
+            echo '<li class="list-group-item" id="item' . $course->subject . $course->courseNum . '" onclick="addCourse(\'' . $course->subject . '\',\'' . $course->courseNum . '\')">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name  . '</li>';
 
         }
         ?>
