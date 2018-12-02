@@ -27,6 +27,8 @@ Route::get('/foo', function(){
 Route::get('/sub', 'CourseHomeController@sub')->name('sub');
 Route::get('/unsub', 'CourseHomeController@unsub')->name('unsub');
 
+Route::get('/subList', 'SearchController@subList')->name('subList');
+
 // Route::get('/user/{name?}', function ($name = 'John') {
 // 	return $name;
 // });
