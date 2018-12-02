@@ -21,6 +21,9 @@
  <h5>Your classes:</h5>
 
 <div class="container" id="selectedCourses">
+    <form method="POST" action="{{ route('addCourse') }}">
+        
+    </form>
 </div>
 <br>
 
