@@ -24,8 +24,8 @@ Route::get('/foo', function(){
 	return 'Hello World';
 });
 
-Route::get('/sub', 'CourseHomeController@sub')->name('sub');
-Route::get('/unsub', 'CourseHomeController@unsub')->name('unsub');
+Route::get('/sub/{id}', 'CourseHomeController@sub')->name('sub');
+Route::get('/unsub/{id}', 'CourseHomeController@unsub')->name('unsub');
 
 Route::get('/subList', 'SearchController@subList')->name('subList');
 

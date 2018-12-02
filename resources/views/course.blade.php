@@ -41,6 +41,7 @@
                 if($num > 0) {
                     echo '</ul></div></div>';
                 }
+
                 echo '<div class="panel panel-default">
                 <div class="panel-heading">
                 <h4 class="panel-title">
@@ -55,8 +56,7 @@
                 $num += 1;
             }
 
-            echo '<li class="list-group-item">'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name .'</li>';
-
+            echo '<li class="list-group-item"><a href="./coursehome/'.$course->courseID.'"><span>'. $course->subject . ' ' . $course->courseNum . ' : ' . $course->name .'</span></a></li>';
         }
         ?>
     </div>

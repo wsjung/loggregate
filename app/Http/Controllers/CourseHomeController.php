@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 
 class CourseHomeController extends Controller
 {
-    public function sub(){
-        $currentCourseID = '1';
+    public function sub($currentCourseID){
+        // $currentCourseID = '1';
         $currentUserID = \Auth::user()->id;
 
         DB::table('subscribed')->insert(['id' => $currentUserID, 'courseID' => $currentCourseID]);
@@ -19,13 +19,12 @@ class CourseHomeController extends Controller
         $membership = DB::table('membership')->get();
         $studygroup = DB::table('studygroup')->where('courseID', $currentCourseID)->get();
 
-        return view('coursehome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'subscribed' => $subscribed
+        return view('coursehome', ['courses' => $courses, 'users' => $users, 'membership' => $membership, 'studygroup' => $studygroup, 'subscribed' => $subscribed, 'subbed' => True
         ]);
     }
 
-    public function unsub(){
-        $currentCourseID = '1';
+    public function unsub($currentCourseID){
+        // $currentCourseID = '1';
         $currentUserID = \Auth::user()->id;
 
         DB::table('subscribed')->where('courseID', $currentCourseID)->where('id', $currentUserID)->delete();
@@ -37,7 +36,7 @@ class CourseHomeController extends Controller
         $studygroup = DB::table('studygroup')->where('courseID', $currentCourseID)->get();
 
         return view('coursehome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'subscribed' => $subscribed
+        'membership' => $membership, 'studygroup' => $studygroup, 'subscribed' => $subscribed, 'unsubbed' => True
         ]);
     }
 
