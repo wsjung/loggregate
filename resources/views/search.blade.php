@@ -16,7 +16,7 @@
 
 
 <div class="container" id="selectedCourses">
-    <form id="selectForm" method="get" action="\app\Http\Controllers\searchSub.php">
+    <form id="selectForm" action="{{ route('subList') }}" method="GET">
         <h5>Your classes: <input type="submit" value="Subscribe"></h5>
     </form>
 </div>
@@ -70,13 +70,14 @@
         var l = document.getElementById('item' + subject + courseNum);
         if(l.style.backgroundColor === "rgb(255, 255, 255)" || l.style.backgroundColor === "") {
             var p = document.getElementById('selectForm');
-            var newCourse = document.createElement('button');
-            newCourse.setAttribute('type','button');
+            var newCourse = document.createElement('input');
+            newCourse.setAttribute('type','text');
             newCourse.setAttribute('name','' + i);
             newCourse.setAttribute('class', 'btn btn-outline-primary');
             newCourse.setAttribute('id', 'selected'+subject+courseNum);
             newCourse.setAttribute('onclick', 'removeCourse(this.id);');
-            newCourse.setAttribute('value', '' + courseID)
+            newCourse.setAttribute('value', '' + subject + ' : ' + courseNum);
+            // newCourse.setAttribute('placeholder','' + subject + ' : ' + courseNum);
             newCourse.innerHTML = subject + ' : ' + courseNum;
             p.appendChild(newCourse);
             i = i+1;
