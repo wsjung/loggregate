@@ -41,7 +41,7 @@ Route::get('/coursehome/{id}', 'CourseHomeController@index')->name('coursehome')
 
 Route::get('/groupregister/{id}', 'GroupRegisterController@index')->name('groupregister');
 
-Route::get('/grouphome', 'GroupHomeController@index')->name('grouphome');
+Route::get('/grouphome/{id}', 'GroupHomeController@index')->name('grouphome');
 
 Route::get('/settings', 'SettingsController@index')->name('settings');
 
