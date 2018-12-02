@@ -16,8 +16,8 @@
 
 
 <div class="container" id="selectedCourses">
-    <form id="selectForm" action="/action_page.php">
-        <h5>Your classes: <input type="submit" value="Subscribe"></h5>
+    <form id="selectForm" action=echo(test)>
+        <h5>Your classes:   <input type="submit" value="Subscribe"></h5>
 
     </form>
 </div>
