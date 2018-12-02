@@ -33,6 +33,10 @@ Route::get('/course', 'CourseController@index')->name('course');
 
 Route::get('/coursehome', 'CourseHomeController@index')->name('coursehome');
 
+Route::get('/groupregister', 'GroupRegisterController@index')->name('groupregister');
+
+Route::get('/grouphome', 'GroupHomeController@index')->name('grouphome');
+
 Route::get('/settings', 'SettingsController@index')->name('settings');
 
 Route::get('/search', 'SearchController@index')->name('search');
