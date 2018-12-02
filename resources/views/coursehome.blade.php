@@ -46,13 +46,12 @@
                     echo "
                     <div class=\"col-md-4\">
                       <div class=\"card mb-4 shadow-sm\">
-                        <h4 class=\"card-text-top\" align=\"center\">" . $sgroup->name ."</h4>
+                        <h4 class=\"card-text-top\" align=\"center\">" . $sgroup->groupName ."</h4>
                         <div class=\"card-body\">
                           <p class=\"card-text\">Meet Day(s): " . $sgroup->meetDay . "<br/>Meet Time: " . $sgroup->meetTime . "<br/>Meet Location: " . $sgroup->meetLocation . "</p>
                           <div class=\"d-flex justify-content-between align-items-center\">
                             <div class=\"btn-group\">
-                                <a type=\"button\" class=\"btn btn-sm btn-outline-secondary\" href=\"{{ route('grouphome') }}\">View</a>
-                                <a type=\"button\" class=\"btn btn-sm btn-outline-secondary\" href=\"#\">Join</a>
+                                <a type=\"button\" class=\"btn btn-primary my-2\" href=\"/grouphome/".$sgroup->groupID."\">View Group</a>
                             </div>
                             <!--<small class=\"text-muted\">[Group Owner]</small>-->
                           </div>
