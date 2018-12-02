@@ -61,6 +61,11 @@
 
             // recolors selected course in list
             l.style.backgroundColor = '#3399ff';
+            return;
+        } 
+        if(l.style.backgroundColor === "rgb(51, 153, 255)") {
+            removeCourse('selected'+subject+courseID);
+            l.style.backgroundColor = '#fff';
         }
     }
 
