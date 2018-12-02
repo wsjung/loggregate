@@ -62,7 +62,8 @@
     // functions for adding selected element to top
     function addCourse(subject, courseID) {
         // adds selected course to top
-        // if(document.getElementById('item'+subject+courseID).style.backgroundColor == '#ffffff') {
+        var l = document.getElementById('item' + subject + courseID);
+        if(l.style.backgroundColor === "rgb(255, 255, 255)" || l.style.backgroundColor === "") {
             var p = document.getElementById('selectedCourses');
             var newCourse = document.createElement('button');
             newCourse.setAttribute('class', 'btn btn-outline-primary');
@@ -72,9 +73,13 @@
             p.appendChild(newCourse);
 
             // recolors selected course in list
-            var p = document.getElementById('item' + subject + courseID);
-            p.style.backgroundColor = '#3399ff';
-        // }
+            l.style.backgroundColor = '#3399ff';
+            return;
+        } 
+        if(l.style.backgroundColor === "rgb(51, 153, 255)") {
+            removeCourse('selected'+subject+courseID);
+            l.style.backgroundColor = '#fff';
+        }
     }
 
     // function for removing select element from top
@@ -83,7 +88,7 @@
         var id = element.id.slice(8);
         element.parentNode.removeChild(element);
         var p = document.getElementById('item' + id);
-        p.style.backgroundColor = '#ffffff';
+        p.style.backgroundColor = '#fff';
     }
 </script>
 @endsection
