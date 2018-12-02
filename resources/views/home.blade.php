@@ -20,14 +20,14 @@
     </div>
     <div class="col-md-8 mb-4">
       <div class="card">
-
         <div class="card-header">My Classes</div>
-        <div class="card-body"></div>
+        <div class="card-body">
         <?php
         foreach ($myCourses as $class){
-          echo '<li class="list-group-item">'. $class->subject . ' ' . $class->courseNum . ' : ' . $class->name .'</li>';
+          echo '<li class="list-group-item"><a href="/coursehome/'.$class->courseID.'">'. $class->subject . ' ' . $class->courseNum . ' : ' . $class->name .'</a></li>';
         }
         ?>
+        </div>
       </div>
     </div>
     <div class="col-md-8 mb-4">
