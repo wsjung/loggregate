@@ -24,14 +24,17 @@ Route::get('/foo', function(){
 	return 'Hello World';
 });
 
+// study group membership
+Route::get('/grouphome/{id}/join', 'GroupHomeController@join')->name('join');
+Route::get('/grouphome/{id}/leave', 'GroupHomeController@leave')->name('leave');
+
+// subscriptions
 Route::get('/sub/{id}', 'CourseHomeController@sub')->name('sub');
 Route::get('/unsub/{id}', 'CourseHomeController@unsub')->name('unsub');
 
+// search page subscription
 Route::get('/subList', 'SearchController@subList')->name('subList');
 
-// Route::get('/user/{name?}', function ($name = 'John') {
-// 	return $name;
-// });
 
 Route::get('/user', 'UserController@index')->name('user');
 
