@@ -11,16 +11,16 @@
                     <?php
                         if($subscribed->where('courseID','1')->where('id', \Auth::user()->id)->count() === 0){
                             echo "
-                            <form action=\"\" method=\"post\">
-                                <button type=\"submit\" class=\"btn btn-primary my-2\">Subscribe</button>
-                            </form>
+                                <form action=\"sub\" method=\"GET\">
+                                <button class=\"btn btn-primary my-2\">Subscribe</button>
+                                <form>
                             ";
                         }
                         else if ($subscribed->where('courseID','1')->where('id', \Auth::user()->id)->count() === 1){
                             echo "
-                            <form action=\"\" method=\"post\">
-                                <button type=\"submit\" class=\"btn btn-primary my-2\">Unsubscribe</button>
-                            </form>
+                            <form action=\"unsub\" method=\"GET\">
+                            <button class=\"btn btn-primary my-2\">Unsubscribe</button>
+                            <form>
                             ";
                         }
 
@@ -29,7 +29,7 @@
 
                     @auth
                     <!-- Need to create conditional for authorized -->
-                    <a href="{{ route('groupregister') }}" class="btn btn-secondary my-2">Create a Study Group</a>
+                    <a href="{{ route('groupregister',$courses->courseID) }}" class="btn btn-secondary my-2">Create a Study Group</a>
                     @else
                     @endauth
 

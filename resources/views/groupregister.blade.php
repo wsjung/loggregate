@@ -6,7 +6,7 @@
 		<h2>Create New Study Group</h2>
 		<h5>for</h5>
 		<?php
-		
+			echo '<h3>' . $courses[0]->subject . ' ' . $courses[0]->courseNum . ' : ' . $courses[0]->name . '</h3>';
 		?>
 	</div>
 

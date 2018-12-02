@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,9 @@ Route::get('/foo', function(){
 	return 'Hello World';
 });
 
+Route::get('/sub', 'CourseHomeController@sub')->name('sub');
+Route::get('/unsub', 'CourseHomeController@unsub')->name('unsub');
+
 // Route::get('/user/{name?}', function ($name = 'John') {
 // 	return $name;
 // });
@@ -31,9 +35,9 @@ Route::get('/user', 'UserController@index')->name('user');
 
 Route::get('/course', 'CourseController@index')->name('course');
 
-Route::get('/coursehome', 'CourseHomeController@index')->name('coursehome');
+Route::get('/coursehome/{id}', 'CourseHomeController@index')->name('coursehome');
 
-Route::get('/groupregister', 'GroupRegisterController@index')->name('groupregister');
+Route::get('/groupregister/{id}', 'GroupRegisterController@index')->name('groupregister');
 
 Route::get('/grouphome', 'GroupHomeController@index')->name('grouphome');
 
