@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class CourseHomeController extends Controller
+class GroupHomeController extends Controller
 {
     public function index()
     {
@@ -15,7 +15,7 @@ class CourseHomeController extends Controller
         $studygroup = DB::table('studygroup')->get();
         $comments = DB::table('comments')->get();
 
-        return view('coursehome', ['courses' => $courses, 'users' => $users,
+        return view('grouphome', ['courses' => $courses, 'users' => $users,
         'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments
         ]);
     }
