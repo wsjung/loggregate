@@ -48,7 +48,7 @@ for dept in depts:
 
 	for s,n,t in zip(subjects,nums,titles):
 		print("insert into Courses(subject, courseNum, name) values ('%s',%s,'%s')" % (s,n,t), flush=True)
-		cursor.execute("insert into Courses(subject, courseNum, name) values ('%s',%s,\"%s\")" % (s,n,t))
+		cursor.execute("insert into courses(subject, courseNum, name) values ('%s',%s,\"%s\")" % (s,n,t))
 
 connection.commit()
 print('database changes committed')
