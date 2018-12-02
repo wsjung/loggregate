@@ -16,7 +16,7 @@ class CreateStudygroupTable extends Migration
         Schema::create('studygroup', function (Blueprint $table) {
             $table->increments('groupID');
             $table->unsignedBigInteger('courseID');
-            $table->string('name');
+            $table->string('groupName');
             $table->string('description')->nullable();
             $table->time('meetTime');
             $table->string('meetDay');

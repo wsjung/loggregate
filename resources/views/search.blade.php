@@ -4,19 +4,29 @@
 
 
 <main role="main" class="container">
+    <?php 
+    if(isset($subbed)) {
+        echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Crispy guacamole!</strong> You subscribed to your courses. View them in the home page!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
+    ?>
     <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Find a course</h1>
-    <br>
-    <h5>To add classes click the class you want to enroll in </h5>
-    <h5>To delete classes click class you want to remove in your list </h5>
-    <h5>Once you have slected all the courses you want to enroll in, hit enroll</h5>
-  </div>
+      <div class="container">
+        <h1 class="display-4">Find a course</h1>
+        <br>
+        <h5>To add classes click the class you want to enroll in </h5>
+        <h5>To delete classes click class you want to remove in your list </h5>
+        <h5>Once you have slected all the courses you want to enroll in, hit enroll</h5>
+    </div>
 </div>
 
 
 <div class="container" id="selectedCourses">
-    <form id="selectForm" action="/action_page.php">
+    <form id="selectForm" action="{{ route('subList') }}" method="GET">
         <h5>Your classes: <input type="submit" value="Subscribe"></h5>
     </form>
 </div>
@@ -24,8 +34,8 @@
 <br>
 
 <div class="container">
-<br>
-Course list:
+    <br>
+    <h5>Course list:</h5>
 </div>
 
 <div class=container>
@@ -70,13 +80,14 @@ Course list:
         var l = document.getElementById('item' + subject + courseNum);
         if(l.style.backgroundColor === "rgb(255, 255, 255)" || l.style.backgroundColor === "") {
             var p = document.getElementById('selectForm');
-            var newCourse = document.createElement('button');
-            newCourse.setAttribute('type','button');
+            var newCourse = document.createElement('input');
+            newCourse.setAttribute('type','text');
             newCourse.setAttribute('name','' + i);
             newCourse.setAttribute('class', 'btn btn-outline-primary');
             newCourse.setAttribute('id', 'selected'+subject+courseNum);
             newCourse.setAttribute('onclick', 'removeCourse(this.id);');
-            newCourse.setAttribute('value', '' + courseID)
+            newCourse.setAttribute('value', '' + subject + ' : ' + courseNum);
+            // newCourse.setAttribute('placeholder','' + subject + ' : ' + courseNum);
             newCourse.innerHTML = subject + ' : ' + courseNum;
             p.appendChild(newCourse);
             i = i+1;

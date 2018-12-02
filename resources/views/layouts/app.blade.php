@@ -18,9 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
-
     <link href="{{ asset('css/search.css') }}" rel="stylesheet" >
 
 
@@ -72,6 +69,7 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <!-- <img width="20px" height="20px" src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}"> -->
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
