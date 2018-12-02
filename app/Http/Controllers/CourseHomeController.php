@@ -7,9 +7,8 @@ use App\Http\Controllers\Controller;
 
 class CourseHomeController extends Controller
 {
-    public function index()
+    public function index($currentCourseID)
     {
-        $currentCourseID = '1';
         $currentUserID = \Auth::user()->id;
 
         $courses = DB::table('courses')->where('courseID', $currentCourseID)->first();

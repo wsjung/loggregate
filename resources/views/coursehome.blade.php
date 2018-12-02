@@ -29,7 +29,7 @@
 
                     @auth
                     <!-- Need to create conditional for authorized -->
-                    <a href="{{ route('groupregister') }}" class="btn btn-secondary my-2">Create a Study Group</a>
+                    <a href="{{ route('groupregister',$courses->courseID) }}" class="btn btn-secondary my-2">Create a Study Group</a>
                     @else
                     @endauth
 
