@@ -23,9 +23,10 @@
     <div class="jumbotron text-center">
         <div class="container">
             <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
-            <h5>Meet Day: <?php echo $studygroup[0]->meetDay ?><br/>Meet Time: <?php echo $studygroup[0]->meetTime ?><br/>Meet Location: <?php echo $studygroup[0]->meetLocation ?></h5>
+            <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
+             <hr class="my-4">
             <p align="center">
-                <?php
+                <?php echo $studygroup[0]->description;
                     // check if user is group member
                     if($memcheck === 0) {
                         echo '<form action="/grouphome/'.$studygroup[0]->groupID.'/join"><button class="btn btn-primary my-2">Join Group</button></form>';
@@ -34,28 +35,35 @@
                     }
                 ?>
             </p>
+            <button class="btn btn-primary my-2">Join Group</button>
         </div>
     </div>
 
     <div class="container">
-    <div class="row">
-
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="#"><b>Conor Muldoon</b></a>
-                            made a post.
+        <div>
+            <h3>Group Posts</h3>
+        </div>
+    <div class="jumbotron">
+        <?php
+            foreach($comments as $comment){
+                echo "
+                 <hr class=\"my-4\">
+                <div class=\"col-sm-8\">
+                    <div class=\"panel panel-white post panel-shadow\">
+                        <div class=\"post-heading\">
+                            <div class=\"pull-left meta\">
+                                <div class=\"title h6\">
+                                    <a href=\"#\"><b>".$users->where('id',$comment->id)->first()->name."</b></a>
+                                    made a post.
+                                </div>
+                                <h6>".$comment->timeStamp ."&nbsp&nbsp&nbsp". $comment->content."</h6>
+                            </div>
                         </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
                     </div>
                 </div>
-                <div class="post-description">
-                    <p>Eat my ass Derek Albosta!!! Hahahaha see you in class buddy!</p>
-                </div>
-            </div>
-        </div>
+                ";
+            }
+        ?>
     </div>
 </div>
 </main>
