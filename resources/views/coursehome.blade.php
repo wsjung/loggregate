@@ -25,6 +25,8 @@
               <h1 class="jumbotron-heading"><?php echo $courses->name; ?></h1>
               <h3><?php echo $courses->subject . " " . $courses->courseNum; ?></h3>
                 <p>
+                    <!-- Need to create conditional for authorized -->
+                    @auth
                     <?php
                         if($subscribed->where('courseID',$courses->courseID)->where('id', \Auth::user()->id)->count() === 0){
                             echo "
@@ -39,12 +41,12 @@
                             <button class=\"btn btn-primary my-2\">Unsubscribe</button>
                             <form>
                             ";
+
+                            // can only create study group if subscribed to course.
+                            echo '<a href="/groupregister/'.$courses->courseID.'" class="btn btn-secondary my-2">Create a Study Group</a>';
                         }
                     ?>
-
-                    @auth
-                    <!-- Need to create conditional for authorized -->
-                    <a href="{{ route('groupregister',$courses->courseID) }}" class="btn btn-secondary my-2">Create a Study Group</a>
+                    
                     @else
                     @endauth
 
