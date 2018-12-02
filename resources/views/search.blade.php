@@ -16,7 +16,7 @@
 
 
 <div class="container" id="selectedCourses">
-    <form id="selectForm" action="/action_page.php">
+    <form id="selectForm" method="get" action="\app\Http\Controllers\searchSub.php">
         <h5>Your classes: <input type="submit" value="Subscribe"></h5>
     </form>
 </div>
@@ -25,7 +25,7 @@
 
 <div class="container">
 <br>
-Course list:
+<h5>Course list:</h5>
 </div>
 
 <div class=container>
