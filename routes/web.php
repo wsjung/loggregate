@@ -35,9 +35,9 @@ Route::get('/user', 'UserController@index')->name('user');
 
 Route::get('/course', 'CourseController@index')->name('course');
 
-Route::get('/coursehome', 'CourseHomeController@index')->name('coursehome');
+Route::get('/coursehome/{id}', 'CourseHomeController@index')->name('coursehome');
 
-Route::get('/groupregister', 'GroupRegisterController@index')->name('groupregister');
+Route::get('/groupregister/{id}', 'GroupRegisterController@index')->name('groupregister');
 
 Route::get('/grouphome', 'GroupHomeController@index')->name('grouphome');
 
