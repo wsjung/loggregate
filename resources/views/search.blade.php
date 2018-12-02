@@ -24,6 +24,11 @@
 </div>
 <br>
 
+<div class="container">
+<br>
+Course list:
+</div>
+
 <div class=container>
     <br>
     <div id="accordion">
