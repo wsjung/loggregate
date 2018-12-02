@@ -25,7 +25,7 @@
   <div class="container">
     <h1 class="display-4">Course List</h1>
   </div>
-</div>    
+</div>
 
 
 <div class=container>
