@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+	<?php 
+    if(isset($PHgroupName)) {
+        echo '<div href="/home" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Error!</strong>  Looks like this study group already exists! <a href="/coursehome/'.$courses[0]->courseID.'"> See study groups</a>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
+    ?>
 	<div class="py-5 text-center">
 		<h2>Create New Study Group</h2>
 		<h5>for</h5>
@@ -16,7 +26,9 @@
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="groupName">Group name</label>
-						<input type="text" class="form-control" id="groupName" name="groupName" placeholder="" value="" required>
+						<input type="text" class="form-control" id="groupName" name="groupName" placeholder="" value="<?php if(isset($PHgroupName)) {
+							echo '' . $PHgroupName;
+						} ?>" required>
 						<div class="invalid-feedback">
 							Group name is required.
 						</div>
@@ -25,7 +37,10 @@
 
 				<div class="mb-3">
 					<label for="description">Description</label>
-					<textarea type="text" class="form-control" id="description" name="groupDescription" rows="4" placeholder="" value=""></textarea>
+					<textarea type="text" class="form-control" id="description" name="groupDescription" rows="4" placeholder="" 
+						value=""><?php if(isset($PHdesc)) {
+							echo '' . $PHdesc;
+						} ?></textarea>
 				</div>
 				<div class="row">
 					<div class="col-md-3 mb-3">
@@ -68,7 +83,9 @@
 
 					<div class="col-md-3 mb-3">
 						<label for="time">Time</label>
-						<input type="time" class="form-control" name="meetTime" id="time" value="" required>
+						<input type="time" class="form-control" name="meetTime" id="time" value="<?php if(isset($PHmeetTime)) {
+							echo '' . $PHmeetTime;
+						} ?>" required>
 						<div class="invalid-feedback">
 							Time is required.
 						</div>
@@ -76,7 +93,9 @@
 
 					<div class="col-md-6 mb-3">
 						<label for="location">Location</label>
-						<input type="text" class="form-control" id="location" name="meetLocation" value="" required>
+						<input type="text" class="form-control" id="location" name="meetLocation" value="<?php if(isset($PHmeetLocation)) {
+							echo '' . $PHmeetLocation;
+						} ?>" required>
 						<div class="invalid-feedback">
 							Location is required.
 						</div>

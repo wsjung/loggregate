@@ -31,8 +31,8 @@
     <div class="jumbotron text-center">
         <div class="container">
             <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
-            <h4><b><?php echo $courses->where('courseID', $studygroup[0]->courseID)->first()->subject . ": " .
-            $courses->where('courseID', $studygroup[0]->courseID)->first()->courseNum; ?></b></h4>
+            <h4><b><?php echo $courses[0]->subject . ": " .
+            $courses[0]->courseNum; ?></b></h4>
             <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
              <hr class="my-4">
             <p align="center">
@@ -47,6 +47,15 @@
                     }
                 ?>
             </p>
+            <div class="dropdown">
+                <a class="btn btn-secondary droptown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+            </div>
         </div>
     </div>
 
