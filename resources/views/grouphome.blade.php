@@ -34,7 +34,7 @@
             if($studygroup[0]->ownerID==\Auth::user()->id){
             echo '
             <div class="dropdown" align="right">
-                <a class="btn btn-secondary droptown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <a class="btn btn-secondary droptown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/gearicon.jpeg" alt="settings"></a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="#">Update Group Information</a>

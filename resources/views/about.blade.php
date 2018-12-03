@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
 
 
-        <p align="center"><img src= "images\Logo.png"></p>
+        <p align="center"><img src= "images/Logo.png"></p>
         <div>
 
             <h2> <center>About Loggregate</center> </h2>
