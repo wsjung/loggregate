@@ -7,6 +7,27 @@ use App\Http\Controllers\Controller;
 
 class GroupHomeController extends Controller
 {
+    public function comment($groupID){
+
+        // parse form input
+        $content = $_GET['content'];
+
+        $currentUserID = \Auth::user()->id;
+
+        DB::table('comments')->insert(['id' => $currentUserID, 'groupID' => $groupID, 'content' => $content, 'timeStamp' => '3:00']);
+
+        $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->count();
+        $courses = DB::table('courses')->get();
+        $users = DB::table('users')->get();
+        $membership = DB::table('membership')->get();
+        $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
+        $comments = DB::table('comments')->get();
+
+        return view('grouphome', ['courses' => $courses, 'users' => $users,
+        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
+        ]);
+    }
+    
     public function join($groupID)
     {
         $currentUserID = \Auth::user()->id;

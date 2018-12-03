@@ -27,6 +27,7 @@ Route::get('/foo', function(){
 // study group membership
 Route::get('/grouphome/{id}/join', 'GroupHomeController@join')->name('join');
 Route::get('/grouphome/{id}/leave', 'GroupHomeController@leave')->name('leave');
+Route::get('/grouphome/{id}/comment', 'GroupHomeController@comment')->name('comment');
 
 // subscriptions
 Route::get('/sub/{id}', 'CourseHomeController@sub')->name('sub');

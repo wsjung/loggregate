@@ -31,6 +31,8 @@
     <div class="jumbotron text-center">
         <div class="container">
             <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
+            <h4><b><?php echo $courses->where('courseID', $studygroup[0]->courseID)->first()->subject . ": " .
+            $courses->where('courseID', $studygroup[0]->courseID)->first()->courseNum; ?></b></h4>
             <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
              <hr class="my-4">
             <p align="center">
@@ -51,7 +53,24 @@
     <div class="container">
         <div>
             <h3>Group Posts</h3>
+            <hr class=\"my-4\">
         </div>
+
+        <?php echo "<form action=\"/grouphome/".$studygroup[0]->groupID."/comment\" method=\"GET\" class=\"needs-validation\" novalidate>"; ?>
+            <div class="row">
+                <div class="col-md-10 mb-3">
+                    <input type="text" class="form-control" id="content" name="content" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Content is required.
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <button class="btn btn-primary" type="submit">Post</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
     <div class="jumbotron">
         <?php
             foreach($comments as $comment){
