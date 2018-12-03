@@ -28,7 +28,16 @@ class GroupRegisterController extends Controller
         // parse through days and update meeting day
         $days = array('M','Tu','W','Th','F','Sa','Su');
 
-        
+        // parse the meet day and update
+        $meetDay = "";
+        foreach($days as $day) {
+            if(isset($_GET[$day])) {
+                $meetDay .= ' ' . $_GET[$day];
+            }
+        }
+        DB::table('studygroup')->where('groupID',$id)->update(['meetDay' => $meetDay]);;
+
+
         $memcheck = DB::table('membership')->where('groupID', $id)->where('id', $currentUserID)->count();
         $courses = DB::table('courses')->get();
         $users = DB::table('users')->get();
