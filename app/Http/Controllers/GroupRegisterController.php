@@ -144,11 +144,13 @@ class GroupRegisterController extends Controller
                 $courses = DB::table('courses')->where('courseID', $id)->get();
                 $users = DB::table('users')->get();
                 $membership = DB::table('membership')->get();
+                $members = DB::table('membership')->where('groupID',$groupID)->get();
+                
                 $studygroup = DB::table('studygroup')->where('groupID',$groupID)->get();
                 $comments = DB::table('comments')->where('groupID', $groupID)->get();
 
                 return view('grouphome', ['courses' => $courses, 'users' => $users,
-                'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'created' => True, 'memcheck' => $memcheck, 'comments' => $comments, 'groupID' => $groupID
+                'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'created' => True, 'memcheck' => $memcheck, 'comments' => $comments, 'groupID' => $groupID, 'members' => $members
                 ]);
             }
         }

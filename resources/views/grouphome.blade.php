@@ -156,7 +156,7 @@
         foreach($members as $member) {
             $userID = $member->id;
             $user = $users->where('id',$userID)->first();
-            echo '<img width="50px" style="border-radius: 50%; margin-right: 10px;" height="50px" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'">;
+            echo '<img width="50px" style="border-radius: 50%; margin-right: 10px;" height="50px" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'">';
         }
     }
     ?>
