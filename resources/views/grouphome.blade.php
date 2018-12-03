@@ -38,13 +38,33 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="#">Update Group Information</a>
-                    <a class="dropdown-item" href="#">Delete Group</a>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteModal">Delete Group</a>
                   </div>
             </div>
 
             ';
             }
             ?>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Are you absolutely sure?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" align="left">
+                    <p>This action cannot be undone.</p>This will permanently delete the <?php echo $studygroup[0]->groupName ?> study group, its info, and comments.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="{{ route('groupdelete',$studygroup[0]->groupID) }}"><button type="button" class="btn btn-danger">Delete <strong><?php echo $studygroup[0]->groupName ?></strong></button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
             <h4><b><?php echo $courses[0]->subject . ": " .
             $courses[0]->courseNum; ?></b></h4>
