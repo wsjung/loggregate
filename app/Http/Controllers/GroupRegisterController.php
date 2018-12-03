@@ -19,6 +19,28 @@ class GroupRegisterController extends Controller
         ]);
     }
 
+    public function update($id) {
+        $currentUserID = \Auth::user()->id;
+
+        // update all info but days
+        DB::table('studygroup')->where('groupID',$id)->update(['groupName' => $_GET['groupName'], 'description' => $_GET['groupDesc'], 'meetTime' => $_GET['meetTime'], 'meetLocation' => $_GET['meetLocation']]);
+
+        // parse through days and update meeting day
+        $days = array('M','Tu','W','Th','F','Sa','Su');
+
+        
+        $memcheck = DB::table('membership')->where('groupID', $id)->where('id', $currentUserID)->count();
+        $courses = DB::table('courses')->get();
+        $users = DB::table('users')->get();
+        $membership = DB::table('membership')->get();
+        $studygroup = DB::table('studygroup')->where('groupID', $id)->get();
+        $comments = DB::table('comments')->where('groupID', $id)->orderBy('timeStamp','desc')->get();
+
+        return view('grouphome', ['courses' => $courses, 'users' => $users,
+        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
+        ]);
+    }
+
     public function delete($id) {
 
         $userid = \Auth::user()->id;
@@ -38,7 +60,7 @@ class GroupRegisterController extends Controller
     }
 
     public function create($id) {
-        $days = array('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday');
+        $days = array('M','Tu','W','Th','F','Sa','Su');
 
         // parse form input
         $groupName = $_GET['groupName'];

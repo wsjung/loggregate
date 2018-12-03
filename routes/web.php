@@ -39,6 +39,8 @@ Route::get('/subList', 'SearchController@subList')->name('subList');
 
 // study group registration
 Route::get('/groupregister/{id}/create','GroupRegisterController@create')->name('groupcreate');
+// study group update
+Route::get('/groupregister/{id}/update','GroupRegisterController@update')->name('groupupdate');
 // study group deletion
 Route::get('/groupregister/{id}/delete','GroupRegisterController@delete')->name('groupdelete');
 
