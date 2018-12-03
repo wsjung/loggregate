@@ -1,68 +1,28 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="C:\Users\DalbostaLT\Desktop\logg\public\images"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## About Loggregate
 
-## About Laravel
+Loggregate is a web application built to serve student from the Univeristy of Puget Sound. Loggregate acts as a mediator for students to create study groups for classes they are enrolled in. A user will find classes they are currently taking and subscribe to the corrisponding course, allowing them to view all their groups of their subscribed classes. A user can then view and sign up for a study group under their subscribed courses.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Using Loggregate
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **[Front Page]**
+Users are first directed to a homepage. Users can login or register a new account to the application. First time users are prompted to create a user name and give their email and a password. They are then sent a verification email to the address they used to sign up with. 
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+- **[Home Page]**
+The home page contains all of the users subscribed classes. This allows a user to view study groups of the classes they are subscribed to by clicking on the class under their class tab. Study groups joined by the user also appear on the home page, allowing them to acess that study group by clicking it under the users group tab.
 
-## Learning Laravel
+- **[Course List Page]**
+The Course List Page contains a list of all current classes being taken during the current semseter and the University of Puget Sound. The course list is sorted by the department tag. When a user clicks on a department, it provides the user with a list of courses under that department. Clicking on a class sends the user to the class's home page.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+- **[Class Page]**
+A class page contains the name of the class and all its associated groups. A user can subscribe to the class on the page and once they are subscribed they are able to create a study group. Once a study group is created under the class page, the study group will appear and display the name of the group, meet time, meet day, and meet location. A user can view a group in more detail by clicking the view group button.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+- **[Create Group Page]**
+When a user decides to create a group for a class, they are directed to the group creation page. The page will prompt the user to create a group name and give a description as to what the study group wants to accomplish. The user is also asked to specify days they want to meet, a time, and a location. Once a user has filled out this information they can create the group by hitting the create button. After succesfully creating a group, a user is redirected to the groups new home page as a subscribed member.
 
-## Laravel Sponsors
+- **[Group Page]**
+A group page is created when a user creates a group under their subscribed class. All users subscribed to the corrisponding class can see the group under the class page. In the group page, A user can view the group name, meet times, location, and a more detailed description of the study groups goals. A button allows a user to join the group if they haven't already or leave if they are already a part of the group. A user can post comments if they are in the study group and view comments of other users in the study group.
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **[Subscribe to Courses Page]**
+The Subscribe to Courses Page contains a list of all current classes being taken during the current semseter and the University of Puget Sound. The course list is sorted by the department tag. When a user clicks on a department, it provides the user with a list of courses under that department. A user will select multiple courses they want to subscribe to from the course list and add it to a user list. A user's class selection is displayed at the top of the page. Once a user selects all of their desired courses, they can subscribe to all courses in their list by pressing the subscribe button. Succesfully subscribing to classes notifies the user with an alert at the top of the page.
