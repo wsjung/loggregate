@@ -11,6 +11,14 @@
         </button>
         </div>';
     }
+    if(isset($overlap)) {
+        echo '<div href="/home" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Crispy guacamole!</strong>  Your new group  <strong>' . $studygroup[0]->groupName . '</strong> was created, but there is another group at a partially or fully overlapping time!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
     if(isset($join)) {
         echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Crispy guacamole!</strong>  You joined group <strong>' . $studygroup[0]->groupName . '</strong>. View them in the <a href="/home" ><u>home page</u></a>!

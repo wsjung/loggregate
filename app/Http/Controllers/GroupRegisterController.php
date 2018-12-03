@@ -92,9 +92,19 @@ class GroupRegisterController extends Controller
 
         // check if already exists
         $groupExists = DB::table('studygroup')->where(['courseID' => $id, 'groupName' => $groupName, 'description' => $desc, 'meetTime' => $meetTime, 'meetDay' => $meetDay, 'meetLocation' => $meetLocation, 'ownerID' => $currentUserID])->count();
+        $groupOverlap = DB::table('studygroup')->where(['courseID' => $id, 'meetTime' => $meetTime])->get();
+        $overlap = False;
+
+        foreach($groupOverlap as $group){
+            $sim = similar_text($group->meetDay, $meetDay, $per);
+            if($sim >= 2){
+                $overlap = True;
+                break;
+            }
+        }
 
         // group doesn't exist -> pass
-        if($groupExists == 0) {
+        if(($groupExists == 0) && !$overlap) {
             // add new study group
             DB::table('studygroup')->insert(['courseID' => $id, 'groupName' => $groupName, 'description' => $desc, 'meetTime' => $meetTime, 'meetDay' => $meetDay, 'meetLocation' => $meetLocation, 'ownerID' => $currentUserID]);
 
@@ -114,6 +124,29 @@ class GroupRegisterController extends Controller
             return view('grouphome', ['courses' => $courses, 'users' => $users,
             'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'created' => True, 'memcheck' => $memcheck, 'comments' => $comments, 'groupID' => $groupID
             ]);
+        // group already exists -> duplicate or refresh.
+        }
+        else if($overlap){
+            // add new study group
+            DB::table('studygroup')->insert(['courseID' => $id, 'groupName' => $groupName, 'description' => $desc, 'meetTime' => $meetTime, 'meetDay' => $meetDay, 'meetLocation' => $meetLocation, 'ownerID' => $currentUserID]);
+
+            // groupID of study group we just created
+            $groupID = DB::table('studygroup')->select('groupID')->where(['courseID' => $id, 'groupName' => $groupName, 'description' => $desc, 'meetTime' => $meetTime, 'meetDay' => $meetDay, 'meetLocation' => $meetLocation, 'ownerID' => $currentUserID])->first()->groupID;
+
+            // add user to study group
+            DB::table('membership')->insert(['id' => $currentUserID, 'groupID' => $groupID]);
+
+            $memcheck = DB::table('membership')->where(['groupID' => $groupID, 'id' => $currentUserID])->count();
+            $courses = DB::table('courses')->where('courseID', $id)->get();
+            $users = DB::table('users')->get();
+            $membership = DB::table('membership')->get();
+            $studygroup = DB::table('studygroup')->where('groupID',$groupID)->get();
+            $comments = DB::table('comments')->where('groupID', $groupID)->get();
+
+            return view('grouphome', ['courses' => $courses, 'users' => $users,
+            'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'overlap' => True, 'memcheck' => $memcheck, 'comments' => $comments, 'groupID' => $groupID
+            ]);
+        }
         // group already exists -> duplicate or refresh.
         } else {
             $courses = DB::table('courses')->where('courseID', $id)->get();
