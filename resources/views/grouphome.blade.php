@@ -100,6 +100,7 @@
                         <div class=\"post-heading\">
                             <div class=\"pull-left meta\">
                                 <div class=\"title h6\">
+                                    <img width=\"50px\" height=\"50px\" src=/storage/avatars/".$users->where('id',$comment->id)->first()->avatar.">
                                     <a href=\"#\"><b>".$users->where('id',$comment->id)->first()->name."</b></a>
                                     made a post on ".substr($comment->timeStamp,0,5).".
                                 </div>
