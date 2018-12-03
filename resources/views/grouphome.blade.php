@@ -3,6 +3,14 @@
 @section('content')
 <main role="main" class="container">
     <?php 
+    if(isset($created)) {
+        echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Crispy guacamole!</strong>  Your new group  <strong>' . $studygroup[0]->groupName . '</strong> has been created!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
     if(isset($join)) {
         echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Crispy guacamole!</strong>  You joined group <strong>' . $studygroup[0]->groupName . '</strong>. View them in the <a href="/home" ><u>home page</u></a>!
@@ -26,7 +34,9 @@
             <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
              <hr class="my-4">
             <p align="center">
-                <?php echo $studygroup[0]->description;
+                <?php 
+                    echo $studygroup[0]->description;
+
                     // check if user is group member
                     if($memcheck === 0) {
                         echo '<form action="/grouphome/'.$studygroup[0]->groupID.'/join"><button class="btn btn-primary my-2">Join Group</button></form>';
@@ -35,7 +45,6 @@
                     }
                 ?>
             </p>
-            <button class="btn btn-primary my-2">Join Group</button>
         </div>
     </div>
 

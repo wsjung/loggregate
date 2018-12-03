@@ -37,7 +37,7 @@
         <div class="card-body">
         <?php
         foreach ($studyGroups as $group){
-          echo '<li class="list-group-item"><a href=/grouphome/'.$group->groupID.'">'. $group->groupName . ' : ' . $group->meetTime . ' ' . $group->meetDay . ' , '. $group->meetLocation .'</a></li>';
+          echo '<li class="list-group-item"><a href="/grouphome/'.$group->groupID.'">'. $group->groupName.'</a></li>';
         }
         ?>
         </div>

@@ -35,6 +35,8 @@ Route::get('/unsub/{id}', 'CourseHomeController@unsub')->name('unsub');
 // search page subscription
 Route::get('/subList', 'SearchController@subList')->name('subList');
 
+// study group registration
+Route::get('/groupregister/{id}/create','GroupRegisterController@create')->name('groupcreate');
 
 Route::get('/user', 'UserController@index')->name('user');
 
