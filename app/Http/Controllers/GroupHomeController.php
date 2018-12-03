@@ -58,6 +58,22 @@ class GroupHomeController extends Controller
 
         DB::table('membership')->where(['id' => $currentUserID, 'groupID' => $groupID])->delete();
 
+        // if no user is part of this group then delete the group
+        $numMembers = DB::table('membership')->where(['groupID' => $groupID])->count();
+
+        if($numMembers === 0) {
+            // delete group
+            $name = DB::table('studygroup')->where('groupID',$groupID)->get();
+            DB::table('studygroup')->where(['groupID' => $groupID])->delete();
+
+
+            // redirect to home page with banner
+            $studyGroups = DB::table('Membership')->join('StudyGroup', 'Membership.groupid', '=', 'StudyGroup.groupid')->where('id', '=', $currentUserID)->get();
+            $myCourses = DB::table('Subscribed')->join('Courses', 'Courses.courseid', '=', 'Subscribed.courseid')->where('id', '=', $currentUserID)->get();
+
+            return view('home', ['studyGroups' => $studyGroups, 'myCourses' => $myCourses, 'leftGroupName' => $name[0]->groupName]);
+        }
+
         $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->count();
         $courses = DB::table('courses')->get();
         $users = DB::table('users')->get();

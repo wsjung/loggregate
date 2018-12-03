@@ -11,6 +11,14 @@
     </button>
     </div>';
   }
+  if(isset($leftGroupName)) {
+    echo '<div href="/home" class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Study group deleted!</strong>  No members left. Group <strong>'.$leftGroupName.'</strong> has been deleted.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
+  }
   ?>
   <div class="row justify-content-center">
     <div class="col-md-8 mb-4">
