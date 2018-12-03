@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/search.css') }}" rel="stylesheet" >
+    <link href="{{ asset('css/coursehome.css') }}" rel="stylesheet" >
 
 
 

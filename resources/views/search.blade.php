@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
 <main role="main" class="container">
     <?php 
     if(isset($size) && $size === 0) {
