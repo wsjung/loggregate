@@ -150,12 +150,14 @@
     ?>  
 </div>
 <div align="left" class="container">
-    <h5>Members:</h5>
-    <?php
-    foreach($members as $member) {
-        $userID = $member->id;
-        $user = $users->where('id',$userID)->first();
-        echo '<img width="50px" style="border-radius: 50%; margin-right: 10px;" height="50px" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'"><img width="50px" height="50px" style="border-radius: 50%; margin-right: 10px;" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'">';
+    <?php 
+    if(isset($members)) {
+        echo '<h5>Members:</h5>';
+        foreach($members as $member) {
+            $userID = $member->id;
+            $user = $users->where('id',$userID)->first();
+            echo '<img width="50px" style="border-radius: 50%; margin-right: 10px;" height="50px" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'"><img width="50px" height="50px" style="border-radius: 50%; margin-right: 10px;" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'">';
+        }
     }
     ?>
 </div>

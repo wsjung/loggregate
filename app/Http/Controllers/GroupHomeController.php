@@ -23,10 +23,11 @@ class GroupHomeController extends Controller
         $courses = DB::table('courses')->where('courseID',$studygroup[0]->courseID)->get();
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
+        $members = DB::table('membership')->where('groupID',$groupID)->get();
         $comments = DB::table('comments')->where('groupID', $groupID)->orderBy('timeStamp','desc')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
+        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'members' => $members
         ]);
     }
 
@@ -44,11 +45,12 @@ class GroupHomeController extends Controller
         $courses = DB::table('courses')->get();
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
+        $members = DB::table('membership')->where('groupID',$groupID)->get();
         $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
         $comments = DB::table('comments')->where('groupID', $groupID)->orderBy('timeStamp','desc')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'join' => True
+        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'join' => True, 'members' => $members
         ]);
     }
 

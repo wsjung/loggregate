@@ -42,11 +42,12 @@ class GroupRegisterController extends Controller
         $courses = DB::table('courses')->get();
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
+        $members = DB::table('membership')->where('groupID',$id)->get();
         $studygroup = DB::table('studygroup')->where('groupID', $id)->get();
         $comments = DB::table('comments')->where('groupID', $id)->orderBy('timeStamp','desc')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
+        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'members' => $members
         ]);
     }
 
@@ -122,11 +123,12 @@ class GroupRegisterController extends Controller
                 $courses = DB::table('courses')->where('courseID', $id)->get();
                 $users = DB::table('users')->get();
                 $membership = DB::table('membership')->get();
+                $members = DB::table('membership')->where('groupID',$groupID)->get();
                 $studygroup = DB::table('studygroup')->where('groupID',$groupID)->get();
                 $comments = DB::table('comments')->where('groupID', $groupID)->get();
 
                 return view('grouphome', ['courses' => $courses, 'users' => $users,
-                'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'overlap' => True, 'memcheck' => $memcheck, 'comments' => $comments, 'groupID' => $groupID
+                'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'overlap' => True, 'memcheck' => $memcheck, 'comments' => $comments, 'groupID' => $groupID, 'members' => $members
                 ]);
             } else {
                 // add new study group
