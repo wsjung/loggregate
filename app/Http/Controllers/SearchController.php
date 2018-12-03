@@ -24,7 +24,7 @@ class SearchController extends Controller
         $order = Order::where('order_id', $orderId)->first();
         if (!$order) {
             App::abort(404);
-    }
+        }
 
         $paid = Input::get('paid');
         $order->save();
@@ -36,7 +36,7 @@ class SearchController extends Controller
         //grab user ID
         $currentUserID = \Auth::user()->id;
 
-        #loop through user subscribed list
+        //loop through user subscribed list
         $size = count($_GET);
         for ($i=0; $i<$size; $i++){
            //get current coursenum and subject
@@ -46,19 +46,19 @@ class SearchController extends Controller
             $subject = $s[0];
             $courseNum = $s[2];
 
-            // echo $currentUserID . " " . $subject . " " . $courseNum . '<br>';
-
+            //echo $currentUserID . " " . $subject . " " . $courseNum . '<br>';
 
             //grab course ID
             $courseID = DB::table('courses')
-                ->select('courseID')
-                ->where([
+            ->select('courseID')
+            ->where([
                 ['subject', '=', $subject],
                 ['courseNum', '=', $courseNum],
-                ])->first();
+            ])->first();
 
             //subscribe user by entry in subscribed
-            DB::table('subscribed')->insert(['id' => $currentUserID, 'courseID' => $courseID->courseID]);
+            DB::table('subscribed')
+            ->insert(['id' => $currentUserID, 'courseID' => $courseID->courseID]);
 
         }
 
