@@ -18,7 +18,6 @@ class CreateCoursesTable extends Migration
             $table->string('subject');
             $table->integer('courseNum');
             $table->string('name');
-            $table->primary('courseID');
         });
     }
 
