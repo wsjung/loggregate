@@ -11,6 +11,14 @@
           </button>
         </div>';
     }
+    if(isset($overlap)) {
+        echo '<div href="/home" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Crispy guacamole!</strong>  Your new group  <strong>' . $studygroup[0]->groupName . '</strong> was created, but there is another group at a partially or fully overlapping time!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
     if(isset($join)) {
         echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Crispy guacamole!</strong>  You joined group <strong>' . $studygroup[0]->groupName . '</strong>. View them in the <a href="/home" ><u>home page</u></a>!
@@ -46,8 +54,7 @@
             }
             ?>
             <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
-            <h4><b><?php echo $courses[0]->subject . ": " .
-            $courses[0]->courseNum; ?></b></h4>
+            <h4><b><?php echo '<a href="/coursehome/' . $studygroup[0]->courseID . '">' . $courses[0]->subject . ": " . $courses[0]->courseNum . '</a>'; ?></b></h4>
             <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
              <hr class="my-4">
             <p align="center">
