@@ -49,7 +49,7 @@
                             <a class="nav-link" href="{{ route('search') }}">SUBSCRIBE TO COURSES</a>
                         </li>
                         <li class="nav-item link">
-                            <a class="nav-link" href="{{ route('secret') }}">SECRET</a>
+                            <a class="nav-link" href="{{ route('about') }}">ABOUT</a>
                         </li>
                         @else
                         @endauth
