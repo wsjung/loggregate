@@ -148,7 +148,7 @@ class GroupRegisterController extends Controller
             ]);
         }
         // group already exists -> duplicate or refresh.
-        } else {
+        else {
             $courses = DB::table('courses')->where('courseID', $id)->get();
             $users = DB::table('users')->get();
             $membership = DB::table('membership')->get();
