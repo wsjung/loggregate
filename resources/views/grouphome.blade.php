@@ -30,6 +30,21 @@
     ?>
     <div class="jumbotron text-center">
         <div class="container">
+        <?php
+            if($studygroup[0]->ownerID==\Auth::user()->id){
+            echo '
+            <div class="dropdown" align="right">
+                <a class="btn btn-secondary droptown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Update Group Information</a>
+                    <a class="dropdown-item" href="#">Delete Group</a>
+                  </div>
+            </div>
+
+            ';
+            }
+            ?>
             <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
             <h4><b><?php echo $courses[0]->subject . ": " .
             $courses[0]->courseNum; ?></b></h4>
@@ -47,15 +62,6 @@
                     }
                 ?>
             </p>
-            <div class="dropdown">
-                <a class="btn btn-secondary droptown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-            </div>
         </div>
     </div>
 
