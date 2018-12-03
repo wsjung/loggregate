@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home' 'HomeController@deleted')->name('homeDelete');
 
 Route::get('/foo', function(){
 	return 'Hello World';
@@ -38,6 +39,10 @@ Route::get('/subList', 'SearchController@subList')->name('subList');
 
 // study group registration
 Route::get('/groupregister/{id}/create','GroupRegisterController@create')->name('groupcreate');
+// study group update
+Route::get('/groupregister/{id}/update','GroupRegisterController@update')->name('groupupdate');
+// study group deletion
+Route::get('/groupregister/{id}/delete','GroupRegisterController@delete')->name('groupdelete');
 
 Route::get('/user', 'UserController@index')->name('user');
 

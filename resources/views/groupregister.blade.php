@@ -48,31 +48,31 @@
 						<br>
 						<div>
 						<label>
-							<input type="checkbox" name="Monday" value="M">
+							<input type="checkbox" name="M" value="M">
 							<br>M
 						</label>
 						<label>
-							<input type="checkbox" name="Monday" value="Tu">
+							<input type="checkbox" name="Tu" value="Tu">
 							<br>Tu
 						</label>
 						<label>
-							<input type="checkbox" name="Wednesday" value="W">
+							<input type="checkbox" name="W" value="W">
 							<br>W
 						</label>
 						<label>
-							<input type="checkbox" name="Thursday" value="Th">
+							<input type="checkbox" name="Th" value="Th">
 							<br>Th
 						</label>
 						<label>
-							<input type="checkbox" name="Friday" value="F">
+							<input type="checkbox" name="F" value="F">
 							<br>F
 						</label>
 						<label>
-							<input type="checkbox" name="Saturday" value="Sa">
+							<input type="checkbox" name="Sa" value="Sa">
 							<br>Sa
 						</label>
 						<label>
-							<input type="checkbox" name="Sunday" value="Su">
+							<input type="checkbox" name="Su" value="Su">
 							<br>Su
 						</label>
 						</div>
