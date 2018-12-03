@@ -14,7 +14,7 @@
     else
     if(isset($subbed)) {
         echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Crispy guacamole!</strong> You subscribed to your courses. View them in the home page!
+          <strong>Crispy guacamole!</strong> You subscribed to your courses. View them in the <a href="/home" ><u>home page</u></a>!
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

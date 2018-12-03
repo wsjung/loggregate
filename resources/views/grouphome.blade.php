@@ -134,8 +134,7 @@
 </div>
 </div>
 <h3 class="display-4"><?php echo $studygroup[0]->groupName; ?></h3>
-<h4><b><?php echo $courses[0]->subject . ": " .
-$courses[0]->courseNum; ?></b></h4>
+<h4><b><?php echo '<a href="/coursehome/' . $studygroup[0]->courseID . '">' . $courses[0]->subject . ": " . $courses[0]->courseNum . '</a>'; ?></b></h4>
 <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
 <hr class="my-4">
 <p align="center">
