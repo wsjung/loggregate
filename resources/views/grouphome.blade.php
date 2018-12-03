@@ -139,7 +139,7 @@
 <hr class="my-4">
 <p align="center">
     <?php
-    echo $studygroup[0]->description;
+    echo '<p style="white-space: pre-wrap">'.$studygroup[0]->description.'</p>';
 
                     // check if user is group member
     if($memcheck === 0) {
