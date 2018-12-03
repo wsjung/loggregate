@@ -82,7 +82,7 @@
                     echo "
                     <div class=\"col-md-4\">
                       <div class=\"card mb-4 shadow-sm\">
-                        <h4 class=\"card-text-top\" align=\"center\">" . $sgroup->groupName ."</h4>
+                        <h4 style=\"margin-top: 20px;\" class=\"card-text-top\" align=\"center\">" . $sgroup->groupName ."</h4>
                         <div class=\"card-body\">
                           <p class=\"card-text\">Meet Day(s): " . $sgroup->meetDay . "<br/>Meet Time: " . $sgroup->meetTime . "<br/>Meet Location: " . $sgroup->meetLocation . "</p>
                           <div class=\"d-flex justify-content-between align-items-center\">
