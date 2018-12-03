@@ -2,7 +2,7 @@
 
 @section('content')
 <main role="main" class="container">
-    <?php 
+    <?php
     if(isset($created)) {
         echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Crispy guacamole!</strong>  Your new group  <strong>' . $studygroup[0]->groupName . '</strong> has been created!
@@ -36,7 +36,7 @@
             <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
              <hr class="my-4">
             <p align="center">
-                <?php 
+                <?php
                     echo $studygroup[0]->description;
 
                     // check if user is group member
@@ -56,19 +56,23 @@
             <hr class=\"my-4\">
         </div>
 
-        <?php echo "<form action=\"/grouphome/".$studygroup[0]->groupID."/comment\" method=\"GET\" class=\"needs-validation\" novalidate>"; ?>
-            <div class="row">
-                <div class="col-md-10 mb-3">
-                    <input type="text" class="form-control" id="content" name="content" placeholder="" value="" required>
-                    <div class="invalid-feedback">
+        <?php
+        if($memcheck > 0){
+        echo "<form action=\"/grouphome/".$studygroup[0]->groupID."/comment\" method=\"GET\" class=\"needs-validation\" novalidate>
+            <div class=\"row\">
+                <div class=\"col-md-10 mb-3\">
+                    <input type=\"text\" class=\"form-control\" id=\"content\" name=\"content\" placeholder=\"\" value=\"\" required>
+                    <div class=\"invalid-feedback\">
                         Content is required.
                     </div>
                 </div>
-                <div class="col-md-2 mb-3">
-                    <button class="btn btn-primary" type="submit">Post</button>
+                <div class=\"col-md-2 mb-3\">
+                    <button class=\"btn btn-primary\" type=\"submit\">Post</button>
                 </div>
             </div>
-        </form>
+        </form>";
+        }
+        ?>
 
     </div>
     <div class="jumbotron">
@@ -84,7 +88,7 @@
                                     <a href=\"#\"><b>".$users->where('id',$comment->id)->first()->name."</b></a>
                                     made a post.
                                 </div>
-                                <h6>".$comment->timeStamp ."&nbsp&nbsp&nbsp". $comment->content."</h6>
+                                <h6>".$comment->timeStamp ."&nbsp&nbsp&nbsp&nbsp". $comment->content."</h6>
                             </div>
                         </div>
                     </div>
