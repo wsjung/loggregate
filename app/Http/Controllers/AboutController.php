@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SecretController extends Controller
+class AboutController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,12 +17,12 @@ class SecretController extends Controller
     }
 
     /**
-     * Show the secret dashboard.
+     * Show the About page.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('secret');
+        return view('about');
     }
 }
