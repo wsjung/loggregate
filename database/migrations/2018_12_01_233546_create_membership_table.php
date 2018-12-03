@@ -18,6 +18,7 @@ class CreateMembershipTable extends Migration
             $table->unsignedBigInteger('groupID');
             $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from users
             $table->foreign('groupID')->references('groupID')->on('studygroup')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from studygroup
+            $table->primary(['id','groupID']);
         });
     }
 
