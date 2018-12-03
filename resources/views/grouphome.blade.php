@@ -72,6 +72,7 @@
 
     </div>
     <div class="jumbotron">
+        
         <?php
             foreach($comments as $comment){
                 echo "

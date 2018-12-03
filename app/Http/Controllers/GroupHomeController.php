@@ -7,6 +7,37 @@ use App\Http\Controllers\Controller;
 
 class GroupHomeController extends Controller
 {
+    public function owner($groupID){
+
+        $isOwner = false;
+
+        $currentUserID = \Auth::user()->id;
+
+        $ownedGroups = DB::table('studygroup')
+        ->where('ownerID', $currentUserID)
+        ->get();
+
+
+        for ($i=0; $i<$ownedGroups; $i++){
+            if ($ownedGroups[$i] == $groupID){
+                $isOwner = true;
+                
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function comment($groupID){
 
         // parse form input
@@ -24,10 +55,10 @@ class GroupHomeController extends Controller
         $comments = DB::table('comments')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
+            'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
         ]);
     }
-    
+
     public function join($groupID)
     {
         $currentUserID = \Auth::user()->id;
@@ -42,7 +73,7 @@ class GroupHomeController extends Controller
         $comments = DB::table('comments')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'join' => True
+            'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'join' => True
         ]);
     }
 
@@ -60,7 +91,7 @@ class GroupHomeController extends Controller
         $comments = DB::table('comments')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'leave' => True
+            'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck, 'leave' => True
         ]);
     }
 
@@ -76,7 +107,7 @@ class GroupHomeController extends Controller
         $comments = DB::table('comments')->where('groupID', $groupID)->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
-        'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
+            'membership' => $membership, 'studygroup' => $studygroup, 'comments' => $comments, 'memcheck' => $memcheck
         ]);
     }
 
