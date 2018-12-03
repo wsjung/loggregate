@@ -19,10 +19,10 @@ class GroupHomeController extends Controller
         DB::table('comments')->insert(['id' => $currentUserID, 'groupID' => $groupID, 'content' => $content, 'timeStamp' => $datetime]);
 
         $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->count();
-        $courses = DB::table('courses')->get();
+        $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
+        $courses = DB::table('courses')->where('courseID',$studygroup[0]->courseID)->get();
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
-        $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
         $comments = DB::table('comments')->where('groupID', $groupID)->orderBy('timeStamp','desc')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,

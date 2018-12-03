@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+  <?php 
+  if(isset($deletedGroupName)) {
+    echo '<div href="/home" class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Study group deleted!</strong> Successfully deleted study group <strong>'.$deletedGroupName.'</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
+  }
+  ?>
   <div class="row justify-content-center">
     <div class="col-md-8 mb-4">
       <div class="card">
