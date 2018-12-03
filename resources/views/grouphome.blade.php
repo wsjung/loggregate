@@ -137,7 +137,7 @@
 <h4><b><?php echo '<a href="/coursehome/' . $studygroup[0]->courseID . '">' . $courses[0]->subject . ": " . $courses[0]->courseNum . '</a>'; ?></b></h4>
 <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
 <hr class="my-4">
-<p align="center">
+<div align="center">
     <?php
     echo '<p style="white-space: pre-wrap">'.$studygroup[0]->description.'</p>';
 
@@ -147,8 +147,18 @@
     } else {
         echo '<form action="/grouphome/'.$studygroup[0]->groupID.'/leave"><button class="btn btn-danger my-2">Leave Group</button></form>';
     }
+    ?>  
+</div>
+<div align="left" class="container">
+    <h5>Members:</h5>
+    <?php
+    foreach($members as $member) {
+        $userID = $member->id;
+        $user = $users->where('id',$userID)->first();
+        echo '<img width="50px" style="border-radius: 50%; margin-right: 10px;" height="50px" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'"><img width="50px" height="50px" style="border-radius: 50%; margin-right: 10px;" title="'.$user->name.'" src="/storage/avatars/'.$user->avatar.'">';
+    }
     ?>
-</p>
+</div>
 </div>
 </div>
 
