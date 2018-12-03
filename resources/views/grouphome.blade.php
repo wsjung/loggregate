@@ -86,9 +86,9 @@
                             <div class=\"pull-left meta\">
                                 <div class=\"title h6\">
                                     <a href=\"#\"><b>".$users->where('id',$comment->id)->first()->name."</b></a>
-                                    made a post.
+                                    made a post on ".substr($comment->timeStamp,0,5).".
                                 </div>
-                                <h6>".$comment->timeStamp ."&nbsp&nbsp&nbsp&nbsp". $comment->content."</h6>
+                                <h6>".substr($comment->timeStamp,10,6)."&nbsp&nbsp&nbsp&nbsp". $comment->content."</h6>
                             </div>
                         </div>
                     </div>
