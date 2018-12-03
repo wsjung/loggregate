@@ -24,7 +24,6 @@ class CreateStudygroupTable extends Migration
             $table->unsignedBigInteger('ownerID');
             $table->foreign('ownerID')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('courseID')->references('courseID')->on('courses')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from Courses
-            $table->primary('groupID');
         });
     }
 
