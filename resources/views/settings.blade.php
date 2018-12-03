@@ -2,16 +2,15 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <!-- <div class="row"> -->
             @if ($message = Session::get('success'))
 
-                <div class="alert alert-success alert-block">
-
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-
-                    <strong>{{ $message }}</strong>
-
-                </div>
+            <div href="/home" class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> {{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
             @endif
 
@@ -25,7 +24,7 @@
                     </ul>
                 </div>
             @endif
-        </div>
+        <!-- </div> -->
         <div class="row justify-content-center">
 
             <div class="profile-header-container">
