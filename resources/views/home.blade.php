@@ -39,6 +39,9 @@
         <div class="card-header">My Groups</div>
         <div class="card-body">
           <?php
+          if($studyGroups->count() === 0) {
+            echo '<div class="col-md-8 mb-3"><span style="float:left;">No study groups! <br> Click on a Course to create new study group or subscribe to existing ones!</span><center><span style="float:right;"><form action="/search"></form></span></center></div>';
+          }
           foreach ($studyGroups as $group){
             echo '<li class="list-group-item"><a href="/grouphome/'.$group->groupID.'">'. $group->groupName.'</a></li>';
           }

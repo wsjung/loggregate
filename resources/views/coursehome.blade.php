@@ -43,14 +43,33 @@
                             ";
 
                             // can only create study group if subscribed to course.
-                            echo '<a href="/groupregister/'.$courses->courseID.'" class="btn btn-secondary my-2">Create a Study Group</a>';
+                             
+                            if($studygroup->count()===0) {
+                              echo '<a href="/groupregister/'.$courses->courseID.'" id="createButton" class="btn btn-secondary my-2">Create a Study Group</a>';
+                            } else {
+                              echo '<a href="/groupregister/'.$courses->courseID.'" class="btn btn-secondary my-2">Create a Study Group</a>';
+                            }
                         }
                     ?>
-                    
                     @else
                     @endauth
-
                 </p>
+                <?php
+                if($studygroup->count()===0) { 
+                  echo '<br><div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Oh noes!</strong> Looks like there are no study groups right now</strong>.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>';
+                  echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <strong></strong> Create the first study group for <strong>'.$courses->subject . ' : ' . $courses->courseNum .'</strong>!</strong>.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>';
+                }
+                ?>
             </div>
         </section>
         <div class="album py-5 bg-light">
