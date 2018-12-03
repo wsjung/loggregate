@@ -53,19 +53,22 @@ class GroupRegisterController extends Controller
     public function delete($id) {
 
         $userid = \Auth::user()->id;
+        // check that specified group even exists
+        $exists = DB::table('studygroup')->where('groupID',$id)->get();
+        if($exists->count() === 0) {
+            // if not exist, redirect to home
+            return redirect()->route('home');
+        } else {
+            // delete specified group
+            $name = DB::table('studygroup')->where('groupID',$id)->get();
+            DB::table('studygroup')->where('groupID',$id)->delete();
 
-        // delete specified group
-        $name = DB::table('studygroup')->where('groupID',$id)->get();
-        DB::table('studygroup')->where('groupID',$id)->delete();
+            // redirect to home page with banner
+            $studyGroups = DB::table('Membership')->join('StudyGroup', 'Membership.groupid', '=', 'StudyGroup.groupid')->where('id', '=', $userid)->get();
+            $myCourses = DB::table('Subscribed')->join('Courses', 'Courses.courseid', '=', 'Subscribed.courseid')->where('id', '=', $userid)->get();
 
-        // redirect to home page with banner
-        $studyGroups = DB::table('Membership')->join('StudyGroup', 'Membership.groupid', '=', 'StudyGroup.groupid')->where('id', '=', $userid)->get();
-        $myCourses = DB::table('Subscribed')->join('Courses', 'Courses.courseid', '=', 'Subscribed.courseid')->where('id', '=', $userid)->get();
-
-        // return redirect()->route('home', ['deletedGroupName' => $name[0]->groupName]);
-
-        return view('home', ['studyGroups' => $studyGroups, 'myCourses' => $myCourses, 'deletedGroupName' => $name[0]->groupName]);
-
+            return view('home', ['studyGroups' => $studyGroups, 'myCourses' => $myCourses, 'deletedGroupName' => $name[0]->groupName]);
+        }
     }
 
     public function create($id) {
