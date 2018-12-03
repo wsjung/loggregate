@@ -176,30 +176,31 @@ $courses[0]->courseNum; ?></b></h4>
         </form>";
     }
     ?>
-
-</div>
-<div class="jumbotron">
-    <?php
-    foreach($comments as $comment){
-        echo "
-        <hr class=\"my-4\">
-        <div class=\"col-sm-8\">
-        <div class=\"panel panel-white post panel-shadow\">
-        <div class=\"post-heading\">
-        <div class=\"pull-left meta\">
-        <div class=\"title h6\">
-        <a href=\"#\"><b>".$users->where('id',$comment->id)->first()->name."</b></a>
-        made a post on ".substr($comment->timeStamp,0,5).".
-        </div>
-        <h6>".substr($comment->timeStamp,10,6)."&nbsp&nbsp&nbsp&nbsp". $comment->content."</h6>
-        </div>
-        </div>
-        </div>
-        </div>
-        ";
-    }
-    ?>
-</div>
+    
+    </div>
+    <div class="jumbotron">
+        <?php
+            foreach($comments as $comment){
+                echo "
+                 <hr class=\"my-4\">
+                <div class=\"col-sm-8\">
+                    <div class=\"panel panel-white post panel-shadow\">
+                        <div class=\"post-heading\">
+                            <div class=\"pull-left meta\">
+                                <div class=\"title h6\">
+                                    <img width=\"50px\" height=\"50px\" src=/storage/avatars/".$users->where('id',$comment->id)->first()->avatar.">
+                                    <a href=\"#\"><b>".$users->where('id',$comment->id)->first()->name."</b></a>
+                                    made a post on ".substr($comment->timeStamp,0,5).".
+                                </div>
+                                <h6>".substr($comment->timeStamp,10,6)."&nbsp&nbsp&nbsp&nbsp". $comment->content."</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ";
+            }
+        ?>
+    </div>
 </div>
 </main>
 @endsection
