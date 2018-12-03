@@ -1,4 +1,4 @@
-<p align="center"><img src= ".\public\images\logo.png"></p>
+<p align="center"><img src= ".\public\images\Logo.png"></p>
 
 ## About Loggregate
 
