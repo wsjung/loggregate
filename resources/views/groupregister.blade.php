@@ -12,11 +12,11 @@
 
 	<div class="row">
 		<div class="col-md-9 mx-auto border-left border-right">
-			<form class="needs-validation" novalidate>
+			<form action="{{ route('groupcreate',$id) }}" class="needs-validation" novalidate>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="groupName">Group name</label>
-						<input type="text" class="form-control" id="groupName" placeholder="" value="" required>
+						<input type="text" class="form-control" id="groupName" name="groupName" placeholder="" value="" required>
 						<div class="invalid-feedback">
 							Group name is required.
 						</div>
@@ -25,7 +25,7 @@
 
 				<div class="mb-3">
 					<label for="description">Description</label>
-					<textarea type="text" class="form-control" id="description" rows="4" placeholder="" value=""></textarea>
+					<textarea type="text" class="form-control" id="description" name="groupDescription" rows="4" placeholder="" value=""></textarea>
 				</div>
 				<div class="row">
 					<div class="col-md-3 mb-3">
@@ -33,31 +33,31 @@
 						<br>
 						<div>
 						<label>
-							<input type="checkbox" name="Monday" value="Mon">
-							<br>Mo
+							<input type="checkbox" name="Monday" value="M">
+							<br>M
 						</label>
 						<label>
-							<input type="checkbox" name="Monday" value="Tue">
+							<input type="checkbox" name="Monday" value="Tu">
 							<br>Tu
 						</label>
 						<label>
-							<input type="checkbox" name="Wednesday" value="Wed">
-							<br>We
+							<input type="checkbox" name="Wednesday" value="W">
+							<br>W
 						</label>
 						<label>
-							<input type="checkbox" name="Thursday" value="Thu">
+							<input type="checkbox" name="Thursday" value="Th">
 							<br>Th
 						</label>
 						<label>
-							<input type="checkbox" name="Friday" value="Fri">
-							<br>Fr
+							<input type="checkbox" name="Friday" value="F">
+							<br>F
 						</label>
 						<label>
-							<input type="checkbox" name="Saturday" value="Sat">
+							<input type="checkbox" name="Saturday" value="Sa">
 							<br>Sa
 						</label>
 						<label>
-							<input type="checkbox" name="Sunday" value="Sun">
+							<input type="checkbox" name="Sunday" value="Su">
 							<br>Su
 						</label>
 						</div>
@@ -68,7 +68,7 @@
 
 					<div class="col-md-3 mb-3">
 						<label for="time">Time</label>
-						<input type="time" class="form-control" id="time" value="" required>
+						<input type="time" class="form-control" name="meetTime" id="time" value="" required>
 						<div class="invalid-feedback">
 							Time is required.
 						</div>
@@ -76,7 +76,7 @@
 
 					<div class="col-md-6 mb-3">
 						<label for="location">Location</label>
-						<input type="text" class="form-control" id="location" value="" required>
+						<input type="text" class="form-control" id="location" name="meetLocation" value="" required>
 						<div class="invalid-feedback">
 							Location is required.
 						</div>

@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->dateTime('timeStamp');
             $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from users
             $table->foreign('groupID')->references('groupID')->on('studygroup')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from studygroup
+            $table->primary('timeStamp');
         });
     }
 

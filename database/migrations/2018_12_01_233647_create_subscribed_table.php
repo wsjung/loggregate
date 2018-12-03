@@ -18,6 +18,7 @@ class CreateSubscribedTable extends Migration
             $table->unsignedBigInteger('courseID');
             $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from users
             $table->foreign('courseID')->references('courseID')->on('courses')->onUpdate('cascade')->onDelete('cascade'); #Foreign Key from courses
+            $table->primary(['id','courseID']);
         });
     }
 

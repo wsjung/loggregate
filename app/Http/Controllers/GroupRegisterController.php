@@ -18,4 +18,47 @@ class GroupRegisterController extends Controller
         'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id
         ]);
     }
+
+    public function create($id) {
+        $days = array('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday');
+
+        // parse form input
+        $groupName = $_GET['groupName'];
+        $meetTime = $_GET['meetTime'];
+        $meetLocation = $_GET['meetLocation'];
+        // parse description (nullable)
+        $desc = null;
+        if(isset($_GET['groupDescription'])) {
+            $desc = $_GET['groupDescription'];
+        }
+        // parse the meet day
+        $meetDay = "";
+        foreach($days as $day) {
+            if(isset($_GET[$day])) {
+                $meetDay .= $_GET[$day];
+            }
+        }
+
+        $currentUserID = \Auth::user()->id;
+
+        // add new study group
+        DB::table('studygroup')->insert(['courseID' => $id, 'groupName' => $groupName, 'description' => $desc, 'meetTime' => $meetTime, 'meetDay' => $meetDay, 'meetLocation' => $meetLocation, 'ownerID' => $currentUserID]);
+
+        // groupID of study group we just created
+        $groupID = DB::table('studygroup')->select('groupID')->where(['courseID' => $id, 'groupName' => $groupName, 'description' => $desc, 'meetTime' => $meetTime, 'meetDay' => $meetDay, 'meetLocation' => $meetLocation, 'ownerID' => $currentUserID])->first()->groupID;
+
+        // add user to study group
+        DB::table('membership')->insert(['id' => $currentUserID, 'groupID' => $groupID]);
+
+        $memcheck = DB::table('membership')->where(['groupID' => $groupID, 'id' => $currentUserID])->count();
+        $courses = DB::table('courses')->where('courseID', $id)->get();
+        $users = DB::table('users')->get();
+        $membership = DB::table('membership')->get();
+        $studygroup = DB::table('studygroup')->get();
+        $comments = DB::table('comments')->where('groupID', $groupID)->get();
+
+        return view('grouphome', ['courses' => $courses, 'users' => $users,
+        'membership' => $membership, 'studygroup' => $studygroup, 'id' => $id, 'created' => True, 'memcheck' => $memcheck, 'comments' => $comments
+        ]);
+    }
 }

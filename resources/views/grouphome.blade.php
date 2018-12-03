@@ -2,7 +2,7 @@
 
 @section('content')
 <main role="main" class="container">
-    <?php
+    <?php 
     if(isset($created)) {
         echo '<div href="/home" class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Crispy guacamole!</strong>  Your new group  <strong>' . $studygroup[0]->groupName . '</strong> has been created!
@@ -36,7 +36,7 @@
             <h5><b>Day(s):</b> <?php echo $studygroup[0]->meetDay ?>&nbsp <b>Time:</b> <?php echo $studygroup[0]->meetTime ?>&nbsp <b>Location:</b> <?php echo $studygroup[0]->meetLocation ?></h5>
              <hr class="my-4">
             <p align="center">
-                <?php
+                <?php 
                     echo $studygroup[0]->description;
 
                     // check if user is group member

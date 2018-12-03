@@ -62,12 +62,12 @@ class SearchController extends Controller
 
         }
 
-        return self::subbed('subbed');
+        return self::subbed('subbed', $size);
     }
 
-    public function subbed($subbed) {
+    public function subbed($subbed, $size) {
         $courses = DB::table('courses')->get();
 
-        return view('search', ['courses' => $courses, 'subbed' => $subbed]);
+        return view('search', ['courses' => $courses, 'subbed' => $subbed, 'size' => $size]);
     }
 }
