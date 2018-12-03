@@ -34,7 +34,11 @@ class GroupHomeController extends Controller
     {
         $currentUserID = \Auth::user()->id;
 
-        DB::table('membership')->insert(['id' => $currentUserID, 'groupID' => $groupID]);
+        $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->count();
+
+        if($memcheck === 0) {
+            DB::table('membership')->insert(['id' => $currentUserID, 'groupID' => $groupID]);    
+        }
 
         $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->count();
         $courses = DB::table('courses')->get();
@@ -71,10 +75,10 @@ class GroupHomeController extends Controller
         $currentUserID = \Auth::user()->id;
 
         $memcheck = DB::table('membership')->where('groupID', $groupID)->where('id', $currentUserID)->count();
-        $courses = DB::table('courses')->get();
         $users = DB::table('users')->get();
         $membership = DB::table('membership')->get();
         $studygroup = DB::table('studygroup')->where('groupID', $groupID)->get();
+        $courses = DB::table('courses')->where('courseID',$studygroup[0]->courseID)->get();
         $comments = DB::table('comments')->where('groupID', $groupID)->orderBy('timeStamp', 'desc')->get();
 
         return view('grouphome', ['courses' => $courses, 'users' => $users,
